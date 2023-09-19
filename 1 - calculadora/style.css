@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&family=Roboto+Slab:wght@300;400&family=Tektur:wght@500&display=swap');
+
+*{
+     margin:0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body{
+     background-color: #2E282A;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+}
+
+.calculatorAll{
+     background: #303336;
+     align-self: center;
+     padding: 10px;
+     border-radius: 15px;
+}
+
+.panel{
+     background: #BFD7EA;
+     height: 60px;
+     border-radius: 10px;
+     padding: 5px;
+     display: flex;
+     justify-content: space-between;
+     font-family: 'Dancing Script', cursive;
+     font-family: 'Roboto Slab', serif;
+     font-family: 'Tektur', cursive;
+}
+
+#operator{
+     font-size: 25px;
+     font-weight: bold;
+}
+
+#result{
+     font-size: 45px;
+     width: 16rem;
+}
+
+.buttons{
+     margin-top: 5px;
+}
+
+.buttons>div{
+     margin-bottom: 5px;
+     display: flex;
+}
+
+button{
+     background: #67626A;
+     color: #FFF;
+     padding: 5px;
+     width: 62px;
+     height: 57px;
+     border-radius: 20px;
+     margin: 5px;
+     font-size: 25px;
+}
+
+#equal{
+     background: #7A001D;
+}
+
+button:active{
+     background-color: #282629;
+}
+
+#equal:active{
+     background: #420010;
+}
