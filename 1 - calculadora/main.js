@@ -11,6 +11,7 @@ numberValue.forEach((number) =>
                result.value="";
                operator.innerHTML="";
                operadorEqual=false;
+               result.className="backWhite";
           }
 
                result.value = result.value+number.innerHTML;
@@ -47,7 +48,6 @@ calcu.forEach((calc) =>{
 equal.addEventListener("click",() =>{
      value2 = parseFloat(result.value);
      if(value1&&value2){
-          
           switch (operator.innerHTML) {
                case "+":
                     value3 = value1+value2;
@@ -74,6 +74,13 @@ equal.addEventListener("click",() =>{
           result.value = value3;
           operadorActive=false;
           operadorEqual=true;
+          
+          if(value3>20&&operadorEqual){
+               result.className= "backGreen";
+          }else if(operadorEqual){
+               result.className= "backOrange";
+               
+          }
      }
 })
 
@@ -85,10 +92,3 @@ keyClean.addEventListener("click", () =>{
      }
 })
 
-// document.addEventListener("keypress", (event) =>{
-//      console.log(event.key);
-//      // result.value = result.value+event.key
-//      if(operadorEqual){
-          
-//      }
-// })

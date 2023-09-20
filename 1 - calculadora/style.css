@@ -41,6 +41,7 @@ body{
 #result{
      font-size: 45px;
      width: 16rem;
+     text-align: end;
 }
 
 .buttons{
@@ -50,6 +51,18 @@ body{
 .buttons>div{
      margin-bottom: 5px;
      display: flex;
+}
+
+.backGreen{
+     background-color: greenyellow;
+}
+
+.backOrange{
+     background-color: #ff9933;
+}
+
+.backWhite{
+     background: #fff;
 }
 
 button{
