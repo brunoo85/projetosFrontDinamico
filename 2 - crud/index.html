@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Catálogo de Séries</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <header>  Informações de Personagens </header>
+     <main>
+          <section class="formulario">
+                    <form id="form">
+                         <div>
+                              <label for="nomePersonagem" class="labelInput">Nome do personagem</label>
+                              <input type="text" name="nomePersonagem" id="nameCaracter">
+                         </div>
+                         <div>
+                              <label for="tendencia" class="labelInput">Tendência do Personagem</label>
+                              <select id="tendencia" name="tendencia">
+                                   <option value="">----- Selecione a tendência do personagem ------</option>
+                                   <option value="Leal e Bom">Leal e Bom</option>
+                                   <option value="Leal e Neutro">Leal e Neutro</option>
+                                   <option value="Leal e Mau">Leal e Mau</option>
+                                   <option value="Neutro e Bom">Neutro e Bom</option>
+                                   <option value="Neutro">Neutro</option>
+                                   <option value="Neutro e Mau">Neutro e Mau</option>
+                                   <option value="Caótico e Bom">Caótico e Bom</option>
+                                   <option value="Caótico e Neutro">Caótico e Neutro</option>
+                                   <option value="Caótico e Mau">Caótico e Mau</option>
+                              </select>
+                         </div>
+
+                         <h2 class="labelInput assistida">Gênero do Personagem</h2>
+
+                         <div class="formLabel">
+                              <label class="labelRadio">
+                                   <input type="radio" name="genero" value="Masculino" id="radio"> Masculino    
+                              </label>
+                              <label class="labelRadio">
+                                   <input type="radio" name="genero" value="Feminino" id="radio"> Feminino
+                              </label>
+                              <label class="labelRadio">
+                                   <input type="radio" name="genero" value="Outro" id="radio"> Outro
+                              </label>
+                         
+                    </div>
+
+                    <div>
+                         <label for="title" class="labelInput">Nota do personagem</label>
+                         <input type="number" name="notaPersonagem" id="notaCaracter">
+                    </div>
+
+                    <label for="imgPersonagem" class="labelInput" >Imagem do Personagem</label>
+                    <input type="file" name="imgPersonagem" id="imgPersonagem" accept="image/*" >
+
+               
+                    
+                    <button type="submit" class="botaoForm">
+                         Adicionar
+                    </button>
+
+               </form>
+          </section>
+          <section class="catalogo"  >
+              
+               <div id="listaSeries">
+                    
+                  </div>
+          </section>
+     </main>
+     <script src="main.js"></script>
+</body>
+</html>
