@@ -6,7 +6,7 @@ function getPersonagem(id){
      if(id){
           personagemIndex=listaPersonagens.findIndex((perso) => perso.id ===id);
 
-          if(personagemIndex ==-1) return;
+          // if(personagemIndex ==-1) return;
 
           const personagem = listaPersonagens[personagemIndex];
           nome.value = personagem.nome;
@@ -27,7 +27,6 @@ getPersonagem(id);
 
 form.addEventListener("submit",(event)=>{
      event.preventDefault();
-     
      const {
           name,
           tendencia,
@@ -79,13 +78,15 @@ form.addEventListener("submit",(event)=>{
           imgError.innerText="Imagem é obrigatória";
         }
 
-        if (personagemIndex != -1) {
-          listaPersonagens[personagemIndex] = novoPersonagem;
-        } else {
-          listaPersonagens.push(novoPersonagem); 
-        }
+     //    if (personagemIndex == 0) {
+     //      listaPersonagens[personagemIndex] = novoPersonagem;
+     //    } else {
+     //      listaPersonagens.push(novoPersonagem); 
+     //    }
+     listaPersonagens.push(novoPersonagem); 
 
-        
+     console.log("aaa");
+     console.log(`personagemIndex = ${personagemIndex}`);
         console.log(listaPersonagens); //passou, tá colocando na array 
 
 
@@ -93,7 +94,7 @@ form.addEventListener("submit",(event)=>{
         //limpa o form 
         form.reset();
 
-        window.location='/'
+    window.location='/'
 })
 
 
