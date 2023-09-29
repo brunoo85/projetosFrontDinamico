@@ -40,13 +40,13 @@ main{
 }
 
 .formulario{
-     width: 45vw;
+     /* width: 45vw; */
      margin-right: 1rem;
      margin-left: 1rem;
 }
 
 .catalogo{
-     width: 47vw;
+     /* width: 47vw; */
      padding-left: 0.5rem;
      padding-right: 1rem;
      overflow-y: auto;
@@ -65,7 +65,7 @@ label{
 }
 
 input{
-     /* width: 87%; */
+     width: 87%;
      font-size: 1.2rem;
      padding: 0.2rem;
      border-radius: 2rem;
@@ -76,7 +76,6 @@ input{
 
 #radio{
      width: 50px;
-     background-color: #4CAF50;
 }
 
 .formLabel{
@@ -115,6 +114,12 @@ input{
      background-color: var(--color-primary);
      color: var(--color-text1);
      /* font-weight: bold; */
+}
+
+.error-msg{
+     margin-right: 5px;
+     font-weight: bold;
+     color: whitesmoke;
 }
 
 li{
@@ -171,3 +176,12 @@ li{
      border-radius: 1.25rem;     
      border: 0.18 solid var(--color-terciary);  
    }
+
+
+   @media (max-width: 500px) {
+     
+     #radio{
+          width: 10vw;
+          background-color: #4CAF50;
+     }
+     }
