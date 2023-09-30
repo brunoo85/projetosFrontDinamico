@@ -11,7 +11,7 @@ function getPersonagem(id){
           tendencia.value = personagem.tendencia;
           genero.value = personagem.genero
           nota.value = personagem.nota
-          img.value = personagem.img
+          msg.value = personagem.msg
      }
 }
 
@@ -22,7 +22,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 getPersonagem(id);
 
-
 form.addEventListener("submit",(event)=>{
      event.preventDefault();
      const {
@@ -30,7 +29,7 @@ form.addEventListener("submit",(event)=>{
           tendencia,
           genero,
           nota,
-          img
+          descricao
      } = event.target;
 
      const novoPersonagem = {
@@ -39,7 +38,7 @@ form.addEventListener("submit",(event)=>{
           tendencia: tendencia.value,
           genero: genero.value,
           nota: nota.value,
-          img: img.value
+          descricao: descricao.value
         };
 
         //colocar validaçoes
@@ -47,8 +46,8 @@ form.addEventListener("submit",(event)=>{
         tendenciaError.innerText = "";
         generoError.innerText = "";
         notaError.innerText = "";
-        imgError.innerText = "";
-      
+        descError.innerText = "";
+        
         if (novoPersonagem.name == "") {
           nomeError.innerText = "Nome é obrigatório";
           return;
@@ -72,8 +71,9 @@ form.addEventListener("submit",(event)=>{
           return;
         }
 
-        if(novoPersonagem.img==""){
-          imgError.innerText="Imagem é obrigatória";
+        if(novoPersonagem.descricao==""){
+          imgError.innerText="Descrição é obrigatória";
+          return;
         }
 
      //    if (personagemIndex == 0) {
@@ -83,16 +83,11 @@ form.addEventListener("submit",(event)=>{
      //    }
      listaPersonagens.push(novoPersonagem); 
 
-     console.log("aaa");
-     console.log(`personagemIndex = ${personagemIndex}`);
-        console.log(listaPersonagens); //passou, tá colocando na array 
-
-
         localStorage.setItem("listaPersonagens", JSON.stringify(listaPersonagens));
         //limpa o form 
         form.reset();
 
-    window.location='/'
+    window.location='./'
 })
 
 

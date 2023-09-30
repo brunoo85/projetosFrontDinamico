@@ -14,7 +14,7 @@
                          <div>
                               <label for="nome" class="labelInput">Nome do personagem</label>
                               <input type="text" name="name" id="name">
-                              <span id="nomeError" class="error-msg">texto teste</span>
+                              <span id="nomeError" class="error-msg"></span>
                          </div>
                          <div>
                               <label for="tendencia" class="labelInput">Tendência do Personagem</label>
@@ -30,7 +30,7 @@
                                    <option value="Caótico e Neutro">Caótico e Neutro</option>
                                    <option value="Caótico e Mau">Caótico e Mau</option>
                               </select>
-                              <span id="tendenciaError" class="error-msg">texto teste</span>
+                              <span id="tendenciaError" class="error-msg"></span>
                          </div>
 
                          <h2 class="labelInput assistida">Gênero do Personagem</h2>
@@ -47,16 +47,16 @@
                               </label>
                               
                          </div>
-                         <span id="generoError" class="error-msg">texto teste</span>
+                         <span id="generoError" class="error-msg"></span>
                     <div>
-                         <label for="title" class="labelInput">Nota do personagem</label>
-                         <input type="number" name="nota" id="nota">
-                         <span id="notaError" class="error-msg">texto teste</span>
+                         <label for="title" class="labelInput">Nota do personagem (1-10)</label>
+                         <input type="number" name="nota" id="nota" max="10">
+                         <span id="notaError" class="error-msg"></span>
                     </div>
 
-                    <label for="imgPersonagem" class="labelInput" >Imagem do Personagem</label>
-                    <input type="file" name="img" id="img" accept="image/*" >
-                    <span id="imgError" class="error-msg">texto teste</span>
+                    <label for="msg" class="labelInput" >Descrição</label>
+                    <textarea id="descricao" name="descricao" rows="4" cols="50" class="descricao"></textarea>
+                    <span id="descError" class="error-msg"></span>
                
                     
                     <button type="submit" class="botaoForm">

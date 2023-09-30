@@ -15,7 +15,7 @@
 }
 
 body{
-     height: 100vh;
+     min-height: 100vh;
      background: rgb(1,22,30);
      background: linear-gradient(0deg, var(--color-primary) 0%, var(--color-secundary) 100%);
      position:static;
@@ -121,61 +121,66 @@ input{
      font-weight: bold;
      color: whitesmoke;
 }
-
-li{
-     list-style-type: none;
-     margin-bottom: 0.5rem;
+   
+body>div{
+     margin-left: 10px;
+     padding: 5px;
 }
 
-.serieDiv {
-     background-color: var(--color-white);
-     border-radius: 2rem;
-     font-size: 1.1rem;
-     padding: 0.5rem;
-     padding-left: 0.6rem;
-     text-align: center;
-   }
-   
-   .serieDiv.editando {
-     background-color: #0b8ed4; 
-   }
-   
-   .botaoEditar, .botaoSalvar, .botaoExcluir{
-     color: var(--color-primary);
-     margin-left: 0.2rem;
-     border: none;
-     padding: 0.5rem;
-     cursor: pointer;
-     border-radius: 20px;
-     font-size: 0.8rem;
-   }
-   
-   .botaoEditar {
-     background-color: #51F653;
-    
-   }
-   
-   .botaoSalvar {
-     background-color: #009DDC;
-   }
-   
-   .botaoExcluir {
-     background-color: #E70D40;
-   }
+.divCadastro{
+     display: block;
+     margin-top: 5px;
+}
 
-   .catalogo::-webkit-scrollbar {
-     width: 0.75rem;               
-   }
-   
-   .catalogo::-webkit-scrollbar-track {
-     background: var(--color-text1);        
-   }
-   
-   .catalogo::-webkit-scrollbar-thumb {
-     background-color: var(--color-secundary); 
-     border-radius: 1.25rem;     
-     border: 0.18 solid var(--color-terciary);  
-   }
+.linkCadastro{
+     border: var(--color-primary) 1px solid;
+     border-radius: 10px;
+     color: var(--color-white);
+     padding: 5px;
+     text-decoration: none;
+     font-weight: 500;
+}
+
+.container{
+     display: flex;
+     color:white;
+     flex-wrap: wrap;
+}
+
+.elem{
+     border: var(--color-primary) 2px solid;
+     padding: 10px;
+     margin: 5px;
+     border-radius: 10px;
+     text-align: center;
+}
+
+.imgElem{
+     display: block;
+     margin: auto;
+     border-radius: 25px;
+}
+
+.name{
+     color: white;
+     font-size: 20px;
+}
+
+.botao{
+     margin:5px;
+     padding: 4px;
+     border-radius: 10px;
+     border: black 1px solid;
+     color: white;
+}
+
+.btnDelete{
+     background-color: #E70D40;
+}
+
+.btnVer{
+     background-color: #4CAF50;
+}
 
 
    @media (max-width: 500px) {
