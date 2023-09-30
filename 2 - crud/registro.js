@@ -1,7 +1,5 @@
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
-
-
 function getPersonagem(id){
      if(id){
           personagemIndex=listaPersonagens.findIndex((perso) => perso.id ===id);

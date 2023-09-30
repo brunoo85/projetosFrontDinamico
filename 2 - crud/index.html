@@ -3,72 +3,19 @@
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Catálogo de Séries</title>
      <link rel="stylesheet" href="style.css">
+     <title>Lista de Personagens</title>
 </head>
 <body>
-     <header>  Informações de Personagens </header>
-     <main>
-          <section class="formulario">
-                    <form id="form">
-                         <div>
-                              <label for="nome" class="labelInput">Nome do personagem</label>
-                              <input type="text" name="name" id="name">
-                              <span id="nomeError" class="error-msg">texto teste</span>
-                         </div>
-                         <div>
-                              <label for="tendencia" class="labelInput">Tendência do Personagem</label>
-                              <select id="tendencia" name="tendencia">
-                                   <option value="">----- Selecione a tendência do personagem ------</option>
-                                   <option value="Leal e Bom">Leal e Bom</option>
-                                   <option value="Leal e Neutro">Leal e Neutro</option>
-                                   <option value="Leal e Mau">Leal e Mau</option>
-                                   <option value="Neutro e Bom">Neutro e Bom</option>
-                                   <option value="Neutro">Neutro</option>
-                                   <option value="Neutro e Mau">Neutro e Mau</option>
-                                   <option value="Caótico e Bom">Caótico e Bom</option>
-                                   <option value="Caótico e Neutro">Caótico e Neutro</option>
-                                   <option value="Caótico e Mau">Caótico e Mau</option>
-                              </select>
-                              <span id="tendenciaError" class="error-msg">texto teste</span>
-                         </div>
+     <header>
+          Lista de personagens
+     </header>
+     <div>
+          <a href="/2 - crud/registro.html">Cadastrar novo Personagem</a>
+     </div>
+     <div class="container" id="container">
 
-                         <h2 class="labelInput assistida">Gênero do Personagem</h2>
-
-                         <div class="formLabel">
-                              <label class="labelRadio">
-                                   <input type="radio" name="genero" value="Masculino" id="radio"> Masculino    
-                              </label>
-                              <label class="labelRadio">
-                                   <input type="radio" name="genero" value="Feminino" id="radio"> Feminino
-                              </label>
-                              <label class="labelRadio">
-                                   <input type="radio" name="genero" value="Outro" id="radio"> Outro
-                              </label>
-                              
-                         </div>
-                         <span id="generoError" class="error-msg">texto teste</span>
-                    <div>
-                         <label for="title" class="labelInput">Nota do personagem</label>
-                         <input type="number" name="nota" id="nota">
-                         <span id="notaError" class="error-msg">texto teste</span>
-                    </div>
-
-                    <label for="imgPersonagem" class="labelInput" >Imagem do Personagem</label>
-                    <input type="file" name="img" id="img" accept="image/*" >
-                    <span id="imgError" class="error-msg">texto teste</span>
-               
-                    
-                    <button type="submit" class="botaoForm">
-                         Adicionar
-                    </button>
-
-               </form>
-          </section>
-          <section class="catalogo" id="catalogo" >
-              <h4></h4>
-          </section>
-     </main>
-     <script type="module" src="main.js"></script>
+     </div>
+     <script src="./lista.js"></script>
 </body>
 </html>
