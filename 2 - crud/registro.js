@@ -1,22 +1,46 @@
-import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+const URL = "https://crudcrud.com/api/30b36d0a9266497cac238395b059e4e1/personagens";
 
-function getPersonagem(id){
+// import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+
+const generos = document.getElementsByClassName("genero");
+
+async function getPersonagem(id){
      if(id){
-          personagemIndex=listaPersonagens.findIndex((perso) => perso.id ===id);
+      const response = await fetch(URL+`/${id}`);
+      const personagem = await response.json();
 
-          // if(personagemIndex ==-1) return;
+      nome.value = personagem.nome;
+      tendencia.value = personagem.tendencia;
+      nota.value = personagem.nota;
+      descricao.value = personagem.descricao;
 
-          const personagem = listaPersonagens[personagemIndex];
-          nome.value = personagem.nome;
-          tendencia.value = personagem.tendencia;
-          genero.value = personagem.genero
-          nota.value = personagem.nota
-          msg.value = personagem.msg
+      for(let i=0;i<generos.length;i++){
+        if(generos[i].value==personagem.genero){
+          generos[i].checked = true;
+        }
+      }
      }
+     console.log(personagem);
 }
 
-const listaPersonagens = JSON.parse(localStorage.getItem("listaPersonagens")) || [];
-let personagemIndex;
+async function addPersonagem(objPersonagem){
+  const response = await fetch(URL, {
+    method: "POST",
+    body: JSON.stringify(objPersonagem),
+    headers:{ 'Content-Type': 'application/json'}
+  });
+
+  return await response.json();
+}
+
+  async function updatePersonagem(id, objPersonagem){
+    const response = await fetch(URL + `/${id}`,{
+      method: "PUT",
+      body: JSON.stringify(objPersonagem),
+      headers:{ 'Content-Type': 'application/json'}
+    });
+    return await response.json();
+  }
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
@@ -25,7 +49,7 @@ getPersonagem(id);
 form.addEventListener("submit",(event)=>{
      event.preventDefault();
      const {
-          name,
+          nome,
           tendencia,
           genero,
           nota,
@@ -33,8 +57,7 @@ form.addEventListener("submit",(event)=>{
      } = event.target;
 
      const novoPersonagem = {
-          id: uuidv4(),
-          name: name.value,
+          nome: nome.value,
           tendencia: tendencia.value,
           genero: genero.value,
           nota: nota.value,
@@ -48,7 +71,7 @@ form.addEventListener("submit",(event)=>{
         notaError.innerText = "";
         descError.innerText = "";
         
-        if (novoPersonagem.name == "") {
+        if (novoPersonagem.nome == "") {
           nomeError.innerText = "Nome é obrigatório";
           return;
         }
@@ -76,36 +99,13 @@ form.addEventListener("submit",(event)=>{
           return;
         }
 
-     //    if (personagemIndex == 0) {
-     //      listaPersonagens[personagemIndex] = novoPersonagem;
-     //    } else {
-     //      listaPersonagens.push(novoPersonagem); 
-     //    }
-     listaPersonagens.push(novoPersonagem); 
+        if(id){
+          updatePersonagem(id, novoPersonagem).then(console.log);
+        } else{
+          addPersonagem(novoPersonagem);
+        }
 
-        localStorage.setItem("listaPersonagens", JSON.stringify(listaPersonagens));
-        //limpa o form 
         form.reset();
 
-    window.location='./'
-})
-
-
-//cria o elemento no catalogo (teste)
-
-// listaPersonagens.forEach((personagem, index)=>{
-//      const catalogo = document.getElementById(catalogo);
-
-//      const elem = document.createElement("div");
-//      elem.className = "elem";
-
-//      const img = document.createElement("img");
-//      img.src=`images/serie${index}.jpeg`;
-//      img.width="50";
-
-//      const name = document.createElement("b");
-//      name.innerText = personagem.nameCaracter;
-
-//      elem.append(img,name);
-//      catalogo.appendChild(elem);
-// })
+    window.location='./index.html';
+});

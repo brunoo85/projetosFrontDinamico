@@ -1,90 +1,89 @@
-const listaPersonagens = JSON.parse(localStorage.getItem("listaPersonagens")) || [];
+const URL = "https://crudcrud.com/api/30b36d0a9266497cac238395b059e4e1/personagens";
 
-listaPersonagens.forEach((personagem) => {
-     const container = document.querySelector(".container");
+async function getPersonagem(){
+  const response = await fetch(URL);
+  return await response.json();
+} 
 
-     const elem = document.createElement("div");
-     elem.className = "elem";
+async function deletePersonagem(id){
+  const response = await fetch(URL+`/${id}`,{method:"DELETE"});
+  if(response.status ==200) return "Você excluiu o personagem";
+  return "Algo deu errado";
+}
 
-     const name= document.createElement("a");
-     name.innerText = `Nome: ${personagem.name}`;
-     name.className="name";
-     name.href=`/registro.html?id=${personagem.id}`;
+function createPersonagem(personagem, index){
+  const container = document.querySelector(".container");
+  const id=`personagem-${personagem._id}`;
 
-    const tend= document.createElement("p");
-    tend.className="tend";
-    tend.innerText=`Tendência: ${personagem.tendencia}`;
-
-    const gen= document.createElement("p");
-    gen.className="genero";
-    gen.innerText=`Gênero: ${personagem.genero}`;
-
-    const nota= document.createElement("p");
-    nota.className="nota";
-    nota.innerText=`Nota: ${personagem.nota}`;
-
-    const img = document.createElement("img");
-    img.src = `images/perfil${personagem.genero}.jpg`;
-    img.width = "50";
-    img.className ="imgElem"
-
-    const btnDelete = document.createElement("button");
-    btnDelete.className="btnDelete botao"
-    btnDelete.innerText = "Remover";
-    btnDelete.id = "delete";
+  let elem = document.querySelector(`div#${id}`);
+  if (elem) return;
   
-    btnDelete.addEventListener("click", () => {
-      if (confirm("Você tem certeza que quer remover este personagem da lista????????")) {
-        // container.removeChild(elem);
-        elem.remove();
-        // deleteAnimal(animal._id).then((msg) => alert(msg));
-      }
-    });
+  elem = document.createElement("div");
+  elem.id = id;
+  elem.className = "elem";
 
-    const btnVer = document.createElement("button");
-    btnVer.className="btnVer botao"
-    btnVer.innerText = "Ver Mais";
-    btnVer.id = "verMais";
-  
-    btnVer.addEventListener("click", () => {
-     alert(personagem.descricao);
-    });
-    
-    elem.appendChild(img);
-    elem.appendChild(name);
-    elem.appendChild(tend);
-    elem.appendChild(gen);
-    elem.appendChild(nota);
-    elem.appendChild(btnDelete);
-    elem.appendChild(btnVer);
+  const img = document.createElement("img");
+  img.src = `images/perfil${personagem.genero}.jpg`;
+  img.width = "50";
+  img.className ="imgElem";
 
-    container.appendChild(elem);
-});
+  const nome= document.createElement("a");
+  nome.innerText = `Nome: ${personagem.nome}`;
+  nome.className="nome";
+  nome.href=`./registro.html?id=${personagem._id}`;
+
+  const tend= document.createElement("p");
+  tend.className="tend";
+  tend.innerText=`Tendência: ${personagem.tendencia}`;
+
+  const gen= document.createElement("p");
+  gen.className="generoLista";
+  gen.innerText=`Gênero: ${personagem.genero}`;
+
+  const nota= document.createElement("p");
+  nota.className="nota";
+  nota.innerText=`Nota: ${personagem.nota}`;
+
+  const btnDelete = document.createElement("button");
+  btnDelete.className="btnDelete botao"
+  btnDelete.innerText = "Remover";
+  btnDelete.id = "delete";
+
+  btnDelete.addEventListener("click", () => {
+    if (confirm("Você tem certeza que quer remover este personagem da lista????????")) {
+      elem.remove();
+      deletePersonagem(personagem._id).then((msg)=> alert(msg));
+    }
+  });
+
+  const btnVer = document.createElement("button");
+  btnVer.className="btnVer botao"
+  btnVer.innerText = "Ver Mais";
+  btnVer.id = "verMais";
+
+  btnVer.addEventListener("click", () => {
+   alert(personagem.descricao);
+  });
+
+  elem.appendChild(img);
+  elem.appendChild(nome);
+  elem.appendChild(tend);
+  elem.appendChild(gen);
+  elem.appendChild(nota);
+  elem.appendChild(btnDelete);
+  elem.appendChild(btnVer);
+
+  container.appendChild(elem);
+
+}
+
+const interval = setInterval(() =>{
+  getPersonagem().then((listaPersonagens)=>{
+    listaPersonagens.forEach(createPersonagem);
+  });
+},5000);
 
 
-// function exibirNomesEImagens() {
-//      const listaNomesEImagens = JSON.parse(localStorage.getItem('listapersonagens')) || [];
-//      const listaElement = document.getElementById('container');
-   
-//      // Limpa a lista atual antes de adicionar os itens
-//      listaElement.innerHTML = '';
-   
-//      // Itera sobre a lista de nomes e imagens e cria elementos de lista para cada um
-//      listaNomesEImagens.forEach(item => {
-//        const listItem = document.createElement('li');
-//        const nomeElement = document.createElement('span');
-//        const imagemElement = document.createElement('img');
-   
-//        nomeElement.textContent = item.nome;
-//        imagemElement.src = item.imagem;
-//        imagemElement.alt = item.nome;
-//        imagemElement.width = 100; // Defina a largura da imagem conforme necessário
-   
-//        listItem.appendChild(nomeElement);
-//        listItem.appendChild(imagemElement);
-//        listaElement.appendChild(listItem);
-//      });
-//    }
-   
-//    // Chama a função para exibir nomes e imagens existentes quando a página é carregada
-//    exibirNomesEImagens();
+setTimeout(() =>{
+  clearInterval(interval);
+},5000);
